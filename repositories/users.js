@@ -47,13 +47,51 @@ class UsersRepository {
         return records.find(record => record.id === id);
     }
 
+    async delete(id) {
+        const records = await this.getAll();
+        const filteredRecords =  records.filter(record => record.id !== id);
+        await this.writeAll(filteredRecords);
+    }
+
+    async update(id, attributes) {
+        const records = await this.getAll();
+        const record = records.find(record => record.id === id);
+        if(!record){
+            throw new Error(`Record with id ${id} not found!`);
+        }
+        Object.assign(record, attributes);
+        await this.writeAll(records);
+    }
+
+    async getOneBy(filters) {
+        const records = await this.getAll();
+
+        for(let record of records) {
+            let found = true;
+          for(let key in filters){
+            if(record[key] !== filters[key]){
+                found = false;
+            }
+          }
+        if(found) {
+            return record;
+        }
+        }
+    }
+
 }
    
-
+// TEST FUNCTION
 const test = async () => {
     const repo = new UsersRepository('users.json'); 
-    const user = await repo.getOne("bea0b394");
-    console.log(user);
+    //const user = await repo.getOne("bea0b394");
+    //await repo.update('816564bb32', { password: 'mypassword'})
+
+    const user = await repo.getOneBy({ 
+        email: 'test@test',
+        id: '605115d7'
+    });
+ console.log(user);
 }; 
 
 test ();
