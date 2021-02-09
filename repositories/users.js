@@ -27,14 +27,6 @@ class UsersRepository {
 const test = async () => {
     const repo = new UsersRepository('users.json'); 
     const users = await repo.getAll()
-        .then((val) => {
-            console.log('rezultatas: ', val);
-            return val;
-        })
-        .catch((err) => {
-            console.log('blogai', err)
-        })
-
     console.log('users are: ', users);
 }; 
 
