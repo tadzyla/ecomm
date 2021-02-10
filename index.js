@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true}));
+const usersRepo = require('./repositories/users')
 
 
 app.get('/', (req, res) => {  //someone makes a network request, callback function will run
@@ -17,8 +18,15 @@ app.get('/', (req, res) => {  //someone makes a network request, callback functi
     `);
 });
 
-app.post('/', (req, res) => {
-    console.log(req.body);
+app.post('/', async (req, res) => {
+    const { email, password, passwordConfirmation } = req.body;
+    const existingUser = await usersRepo.getOneBy({email});
+    if(existingUser) {
+        return res.send('Email is in use');
+    }
+    if(password !== passwordConfirmation) {
+        return res.send('Passwords must match');
+    }
     res.send('Account created!');
 });
 

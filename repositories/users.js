@@ -73,25 +73,14 @@ class UsersRepository {
                 found = false;
             }
           }
-        if(found) {
-            return record;
-        }
+            if(found) {
+                return record;
+            }
         }
     }
 
 }
+
+module.exports = new UsersRepository('users.json');
    
-// TEST FUNCTION
-const test = async () => {
-    const repo = new UsersRepository('users.json'); 
-    //const user = await repo.getOne("bea0b394");
-    //await repo.update('816564bb32', { password: 'mypassword'})
 
-    const user = await repo.getOneBy({ 
-        email: 'test@test',
-        id: '605115d7'
-    });
- console.log(user);
-}; 
-
-test ();
