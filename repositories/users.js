@@ -26,14 +26,16 @@ class UsersRepository {
     async create(attributes) {
         attributes.id = this.randomId();
         const records = await this.getAll();
-        records.push(attributes);
-        await this.writeAll(records);
+        records.push(attributes); 
+        await this.writeAll(records); 
+        return attributes;
     }
 
     async writeAll(records) {
         return new Promise((resolve, reject) => {
             fs.writeFile(this.filename, JSON.stringify(records, null, 2), (err) => {
-                if(err) throw err;
+                if(err) reject (err);
+                else resolve (JSON.stringify(records, null, 2));
         })
     });  
     }
@@ -82,5 +84,3 @@ class UsersRepository {
 }
 
 module.exports = new UsersRepository('users.json');
-   
-
