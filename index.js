@@ -69,15 +69,19 @@ app.post('/signin', async (req, res) => {
     const user = await usersRepo.getOneBy({email});
 
     if(!user) {
-        return res.send('Email is not found');
+        return res.send('Email is not found'); // OK
     }
-    if(user.password !== password){
+    const validPassword = await usersRepo.comparePasswords(
+        user.password, 
+        password
+    );
+    if(!validPassword){
         return res.send('Password is wrong');
     }
     req.session.userId = user.id;
     res.send('You are signed in!');
 });
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log('Listen');
 }); 
