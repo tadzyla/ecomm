@@ -13,5 +13,25 @@
     "email": "ted@ted.com",
     "password": "ec3d2d78d8fbcbead5b11b7d8d795e93751b4d4102263869938fb17791f43c9a264e9aaedf566e111dcdbca43db983683bb6ca820ddb3eaa1ad1856361c3e1e8.c353588e42468e82",
     "id": "c045487a"
+  },
+  {
+    "email": "ww@w.com",
+    "password": "2c442017fd7df7a59d711812cf5c068ea20b1aa3ddf26eec59cc25c3072b3ddf30ff7a46fef8c134376dc313b7b557be89f46b53a03f75f19d63a3a9e647e06c.64ea9c03863a2371",
+    "id": "1d61a000"
+  },
+  {
+    "email": "bubu@bubu.com",
+    "password": "08946136481396493b212629c6519978fdeaec82cbb738567f9a7586de209332788beaac4be52c26a86f7662674d5be35927e5ad80a8912958b35d8570eb424e.2db4dbcb48fff08c",
+    "id": "9fb97fe9"
+  },
+  {
+    "email": "baton@baton.com",
+    "password": "bc46cfb8d6c8606041747f58761e2584add3569a05268f0a1e5b9221d8c69980c2c4f3aba21f6737b1b2384efcbb9c8e1c097ad1c82472e8aebfbd37fe39106f.371b93ff3280d467",
+    "id": "2f2b37e5"
+  },
+  {
+    "email": "kurwa@kurwa.lt",
+    "password": "a3ff5b30f4f44c6ce9fc604647e4833b5b54c3b7012f26648c2f14b6fe10b722647aee7040bb95aada1cfdf8715932af7960d81d453fc73622f41e366632303f.a8290db43bbe1008",
+    "id": "a503b23d"
   }
 ]
