@@ -33,5 +33,25 @@
     "email": "kurwa@kurwa.lt",
     "password": "a3ff5b30f4f44c6ce9fc604647e4833b5b54c3b7012f26648c2f14b6fe10b722647aee7040bb95aada1cfdf8715932af7960d81d453fc73622f41e366632303f.a8290db43bbe1008",
     "id": "a503b23d"
+  },
+  {
+    "email": "jurga@jurga.com",
+    "password": "f89912d2db00c04febeb6e2dc79a77f1b64cb82a1ea0e3fcb67fe4d849d24fe4c3fb6b23a60f49d2a81e579d72ebb7954a6d5d2ba4b57ac9d0360321db5a52e4.b35c84eb007913aa",
+    "id": "c52d199b"
+  },
+  {
+    "email": "karolis@karolis.com",
+    "password": "20064f44bac14bf51406b4b7a5ba4119b0b1d4c679bd9237c282e002bff2b813fbd44c9d91fa3fc5eb1f5e9cd6799a028f41969c82245036376ed29d7aba9146.404b806a33360b63",
+    "id": "37de77ae"
+  },
+  {
+    "email": "geras@geras.com",
+    "password": "f4eacb4ac170ddef6092f50fe4ff5e915ee20701f83f053c4c6dc5680736204e1f8b11962687c20f62d6e342efe21530b24147b46d7746930c62f1b2948b965e.75e0a47e0ea277cb",
+    "id": "bf81c8d6"
+  },
+  {
+    "email": "get@get.com",
+    "password": "f335e5a91a8b5fcd2fe9be9d817db65fa7c38a02afbb99a443071a180ec0553ef4255be08aa1bad053d05d666e00c5d2cf735fa6347b143a8ccf0a71679d2150.2d868c5766235e2f",
+    "id": "375facc4"
   }
 ]
