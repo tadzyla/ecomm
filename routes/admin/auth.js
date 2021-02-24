@@ -27,7 +27,7 @@ router.post('/signup',
     const user = await usersRepo.create({ email, password });
 
      // store the id of that user in the users cookie
-   req.session.userId = user.id;
+    req.session.userId = user.id;
     res.redirect('/admin/products');
 });
 
@@ -43,7 +43,7 @@ router.get('/signin', (req, res) => {
 router.post('/signin', 
     [requireEmailExists, requirePasswordForUser],
     handleErrors(signinTemplate),
-async (req, res) => {
+    async (req, res) => {
     const { email } = req.body;
     const user = await usersRepo.getOneBy({email});
     

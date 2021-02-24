@@ -17,12 +17,10 @@ router.get('/admin/products', requireAuth, async (req, res) => {
 });
 
 router.get('/admin/products/new', requireAuth, (req, res) => {
-    
     res.send(productsNewTemplate({}));
 });
 
-router.post(
-    '/admin/products/new', 
+router.post('/admin/products/new', 
     requireAuth,
     upload.single('image'),
     [requireTitle, requirePrice], //validation steps
@@ -32,8 +30,7 @@ router.post(
         const image = req.file.buffer.toString('base64');
         const { title, price } = req.body;
         await productsRepo.create({ title, price, image });
-
-        res.redirect('/admin/products');
+        res.redirect('/admin/products');        
 });
 
 router.get('/admin/products/:id/edit', requireAuth, async (req, res) => {
@@ -69,11 +66,8 @@ async (req, res) => {
 
 router.post('/admin/products/:id/delete', requireAuth, async (req, res) => {
 
-   try {
-        await productsRepo.delete(req.params.id);
-   } catch(err) {
-    res.redirect('/admin/products');
-   }
+    await productsRepo.delete(req.params.id);
+  
     res.redirect('/admin/products');
 });
 
