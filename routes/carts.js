@@ -8,39 +8,36 @@ const router = express.Router();
 router.post('/cart/products', async (req, res) => {
     // figure out the cart
     let cart;
-    if(!req.session.cartId){
+    if(!req.session.cartId) {
       // we don't have a cart, we need to create one
       // and store cart id on req.session.cartId property
     
       cart = cartsRepo.create({ items: [] });
       req.session.cartId = cart.id;
-      
-    }else{
+    } else {
       //we have a cart, lets get it from reposoitory
       cart = await cartsRepo.getOne(req.session.cartId);
-    
-  }
+     }
 
     const existingItem = cart.items.find(item => item.id === req.body.productId);
-    if(!existingItem){
-    // Either increment the quantity for existing product
-    existingItem.quantity++;
-    } else{
-    // OR add new product for items array
-    cartsRepo.items.push({ id: req.body.productId,  quantity: 1});
-    
-  }
 
+    if(existingItem) {
+    // Either increment the quantity for existing product
+       existingItem.quantity++;
+      } else {
+    // OR add new product for items array
+    cart.items.push({ id: req.body.productId,  quantity: 1});
+  }
     await cartsRepo.update(cart.id, {
       items: cart.items
     });
 
 
-  res.send('Product added to cart');
+  res.redirect('/cart');
   });
 
 // receive a GET request to show all items in a cart
-router.get('./cart', async (req, res) => {
+router.get('/cart', async (req, res) => {
   if(!req.session.cartId){
     return res.redirect('/');
   }
@@ -52,6 +49,16 @@ router.get('./cart', async (req, res) => {
   }
   res.send(cartShowTemplate({ items: cart.items }));
 });
+
 // receive a post request to delete item from cart
+router.post('/cart/products/delete', async (req, res) => {
+  const { itemId } = req.body;
+  const cart = await cartsRepo.getOne(req.session.cartId);
+  const items = cart.items.filter(item => item.id !== itemId);
+
+  await cartsRepo.update(req.session.cartId, { items });
+
+  res.redirect('/cart');
+});
 
 module.exports = router;
